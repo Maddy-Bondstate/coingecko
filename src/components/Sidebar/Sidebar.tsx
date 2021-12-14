@@ -36,7 +36,7 @@ const Sidebar = () => {
   );
 
   return (
-    <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+    <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-60 z-10 py-4 px-6">
       <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
         {(collapseButton("bg-white m-2 py-3 px-6", "fa-bars"), projectName())}
 
@@ -51,9 +51,35 @@ const Sidebar = () => {
               </div>
             </div>
           </div>
+          <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+            <li className="items-center">
+              <Link
+                className={`text-xs uppercase py-3 font-bold block ${linkActive(
+                  menu.dashboard.link,
+                  false
+                )}`}
+                to={menu.dashboard.link}
+              >
+                <i
+                  className={`fas mr-2 text-sm ${linkActive(
+                    menu.dashboard.link,
+                    true,
+                    menu.dashboard.icon
+                  )}`}
+                ></i>
+                {menu.dashboard.name}
+              </Link>
+            </li>
+          </ul>
+
+          <hr className="my-4 md:min-w-full text-slate-300" />
+
+          <h6 className="md:min-w-full text-slate-400 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+            Coins
+          </h6>
 
           <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-            {menu.map((m, i) => (
+            {menu.coin.map((m, i) => (
               <li className="items-center" key={i}>
                 <Link
                   className={`text-xs uppercase py-3 font-bold block ${linkActive(

@@ -1,20 +1,22 @@
-export const menu = [
-  {
+export const menu = {
+  dashboard: {
     name: "Dashboard",
     link: "/",
     icon: "fa-tv",
   },
-  {
-    name: "Coin List",
-    link: "/coin/list",
-    icon: "fa-chart-bar",
-  },
-  {
-    name: "Coin Markets",
-    link: "/coin/markets",
-    icon: "fa-chart-line",
-  },
-];
+  coin: [
+    {
+      name: "Coin List",
+      link: "/coin/list",
+      icon: "fa-chart-bar",
+    },
+    {
+      name: "Coin Markets",
+      link: "/coin/markets",
+      icon: "fa-chart-line",
+    },
+  ],
+};
 
 export const sidebarLinkActive = {
   active: "text-sky-500 hover:text-sky-600",

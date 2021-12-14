@@ -1,4 +1,3 @@
-import { Console } from "console";
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import "../../assets/styles/index.css";
@@ -9,6 +8,7 @@ export default function CardTable({
   list,
   perPage,
   pageName,
+  setCurrencySymbol,
 }: any) {
   const tableHead = (name: string) => (
     <th
@@ -27,13 +27,22 @@ export default function CardTable({
   const [pageCount, setPageCount] = useState(0);
   const [listOffset, setListOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const [currency, setCurrency] = useState("usd");
+  // const [currencySymbol, setCurrencySymbol] = useState("$");
 
   useEffect(() => {
+    initialStart(currency);
+  }, [listOffset, perPage]);
+
+  const initialStart = async (curr: string) => {
     setState((s: any) => ({
       ...s,
       loading: true,
     }));
-    list().then((data: any) => {
+
+    await list(curr).then((data: any) => {
       setState((s: any) => ({
         ...s,
         data,
@@ -41,16 +50,27 @@ export default function CardTable({
       }));
 
       if (data.length > 0) {
-        const endOffset = listOffset + perPage;
-        setCurrentItems(data.slice(listOffset, endOffset));
-        setPageCount(Math.ceil(data.length / perPage));
+        handleSearch(search, data, false);
       }
     });
-  }, [listOffset, perPage]);
+  };
 
   const handlePageClick = (e: any) => {
     const newOffset = (e.selected * perPage) % state.data.length;
     setListOffset(newOffset);
+  };
+
+  const handleSearch = (name: string, data: any, resetOffset: boolean) => {
+    setSearch(name);
+    if (resetOffset) setListOffset(0);
+
+    let bbb = data.filter((d: any) =>
+      d.name.toLowerCase().includes(name.toLowerCase())
+    );
+
+    const endOffset = listOffset + perPage;
+    setCurrentItems(bbb.slice(listOffset, endOffset));
+    setPageCount(Math.ceil(bbb.length / perPage));
   };
 
   return (
@@ -62,6 +82,47 @@ export default function CardTable({
               {pageName}
             </h3>
           </div>
+          <div className="flex items-center">
+            {setCurrencySymbol && (
+              <select
+                value={currency}
+                className="border mr-4 outline-0 px-2 py-1 focus:ring-indigo-500 focus:border-indigo-600 shadow-sm sm:text-sm border-gray-500 rounded-md"
+                onChange={(e: any) => {
+                  return (
+                    setCurrency(e.target.value),
+                    setCurrencySymbol(
+                      e.target.childNodes[e.target.selectedIndex].getAttribute(
+                        "data-symbol"
+                      )
+                    ),
+                    initialStart(e.target.value)
+                  );
+                }}
+              >
+                <option data-symbol="$" value="usd">
+                  USD
+                </option>
+                <option data-symbol="€" value="eur">
+                  EUR
+                </option>
+              </select>
+            )}
+            <input
+              type="text"
+              onChange={(e) => handleSearch(e.target.value, state.data, true)}
+              value={search}
+              placeholder="search name"
+              className="border outline-0 px-2 py-1 focus:ring-indigo-500 focus:border-indigo-600 block w-full shadow-sm sm:text-sm border-gray-500 rounded-md "
+            />
+            {search !== "" && (
+              <span
+                onClick={() => handleSearch("", state.data, true)}
+                className="ml-2 cursor-pointer inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-500 hover:bg-red-400 tracking-wide rounded-full"
+              >
+                Clear
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -70,8 +131,6 @@ export default function CardTable({
           <thead>
             <tr>{tableHeadName.map((n: string) => tableHead(n))}</tr>
           </thead>
-
-          {console.log(state.data.length)}
 
           <tbody>
             {state.loading
@@ -99,6 +158,7 @@ export default function CardTable({
           pageRangeDisplayed={2}
           pageCount={pageCount}
           previousLabel="<"
+          forcePage={listOffset === 0 ? 0 : listOffset / perPage}
           className="pagination"
         />
       </div>

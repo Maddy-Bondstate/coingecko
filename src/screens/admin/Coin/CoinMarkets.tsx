@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import CardTable from "../../../components/Cards/CardTable";
 
 export default function CoinMarkets() {
+  const [currencySymbol, setCurrencySymbol] = useState("$");
+
   const tableHeadName = ["Name", "Current Price", "High 24h", "Low 24h", ""];
   const tableBody = (data: any) => (
     <tr key={data.id}>
@@ -14,13 +16,13 @@ export default function CoinMarkets() {
         <span className="ml-3 font-bold text-blueGray-600">{data.name}</span>
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        $ {data.current_price}
+        {currencySymbol} {data.current_price}
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        $ {data.high_24h}
+        {currencySymbol} {data.high_24h}
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        $ {data.low_24h}
+        {currencySymbol} {data.low_24h}
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <a
@@ -33,9 +35,9 @@ export default function CoinMarkets() {
     </tr>
   );
 
-  let list = async () => {
+  let list = async (currency: string) => {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}`,
       {
         method: "GET",
         headers: {
@@ -49,13 +51,14 @@ export default function CoinMarkets() {
 
   return (
     <div className="flex flex-wrap mt-4">
-      <div className="w-full mb-12 px-4">
+      <div className="w-full mb-12 px-4 relative">
         <CardTable
-          pageName="Coin Markets (USD)"
+          pageName="Coin Markets"
           list={list}
           tableHeadName={tableHeadName}
           tableBody={tableBody}
           perPage={10}
+          setCurrencySymbol={setCurrencySymbol}
         />
       </div>
     </div>

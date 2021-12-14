@@ -2,17 +2,14 @@ import React from "react";
 import CardTable from "../../../components/Cards/CardTable";
 
 export default function CoinList() {
-  const tableHeadName = ["Id", "Symbol", "Name", ""];
-  const tableBody = (data: any) => (
+  const tableHeadName = ["Name", "Symbol", ""];
+  const tableBody = (data: any, i: number) => (
     <tr key={data.id}>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {data.id}
+        {data.name}
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         {data.symbol}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {data.name}
       </td>
       <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
         <a

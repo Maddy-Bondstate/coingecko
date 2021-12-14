@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import "../../assets/styles/index.css";
+import "../../assets/styles/pagination.css";
+import TableHead from "../UI/Table/TableHead";
 
 export default function CardTable({
   tableHeadName,
@@ -10,14 +11,7 @@ export default function CardTable({
   pageName,
   setCurrencySymbol,
 }: any) {
-  const tableHead = (name: string) => (
-    <th
-      key={name}
-      className="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-    >
-      {name}
-    </th>
-  );
+  const tableHead = (name: string) => <TableHead key={name} name={name} />;
 
   const [state, setState] = useState<any>({
     data: [],
@@ -27,10 +21,9 @@ export default function CardTable({
   const [pageCount, setPageCount] = useState(0);
   const [listOffset, setListOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
-  const [search, setSearch] = useState("");
 
+  const [search, setSearch] = useState("");
   const [currency, setCurrency] = useState("usd");
-  // const [currencySymbol, setCurrencySymbol] = useState("$");
 
   useEffect(() => {
     initialStart(currency);
@@ -78,9 +71,7 @@ export default function CardTable({
       <div className="rounded-t mb-0 px-4 py-3 border-0">
         <div className="flex flex-wrap items-center">
           <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3 className="font-semibold text-lg text-blueGray-700">
-              {pageName}
-            </h3>
+            <h3 className="font-semibold text-lg text-slate-700">{pageName}</h3>
           </div>
           <div className="flex items-center">
             {setCurrencySymbol && (

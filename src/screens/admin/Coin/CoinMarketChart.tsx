@@ -44,7 +44,7 @@ export default function CoinMarketChart() {
     <div className="flex flex-wrap mt-4">
       <a
         href={`/admin/coin-markets`}
-        className="animate-bounce bg-white text-blueGray-700 p-2 w-10 h-10 cursor-pointer ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center"
+        className="animate-bounce bg-white text-slate-700 p-2 w-10 h-10 cursor-pointer ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center"
       >
         <i className="fas fa-arrow-left" />
       </a>

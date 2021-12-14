@@ -1,52 +1,37 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Badge from "../../../components/UI/Badge/Badge";
 import CardTable from "../../../components/Cards/CardTable";
+import TableBody from "../../../components/UI/Table/TableBody";
+import { getData } from "../../../services/fetch";
 
 export default function CoinMarkets() {
   const [currencySymbol, setCurrencySymbol] = useState("$");
 
   const tableHeadName = ["Name", "Current Price", "High 24h", "Low 24h", ""];
+
   const tableBody = (data: any) => (
     <tr key={data.id}>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+      <TableBody className="text-left flex items-center">
         <img
           src={data.image}
           className="h-7 w-7 bg-white rounded-full border"
           alt="..."
         />
-        <span className="ml-3 font-bold text-blueGray-600">{data.name}</span>
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {currencySymbol} {data.current_price}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {currencySymbol} {data.high_24h}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {currencySymbol} {data.low_24h}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        <a
-          href={`/admin/coin/${data.id}/market-chart`}
-          className="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-blue-100 bg-blue-600 rounded-full"
-        >
-          View Chart
+        <span className="ml-3 font-bold text-slate-600">{data.name}</span>
+      </TableBody>
+      <TableBody name={`${currencySymbol} ${data.current_price}`} />
+      <TableBody name={`${currencySymbol} ${data.high_24h}`} />
+      <TableBody name={`${currencySymbol} ${data.low_24h}`} />
+      <TableBody>
+        <a href={`/admin/coin/${data.id}/market-chart`}>
+          <Badge name="View Chart" />
         </a>
-      </td>
+      </TableBody>
     </tr>
   );
 
   let list = async (currency: string) => {
-    const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      }
-    );
-
-    return await response.json();
+    return await getData(`coins/markets?vs_currency=${currency}`);
   };
 
   return (

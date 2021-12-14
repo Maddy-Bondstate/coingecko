@@ -6,10 +6,10 @@ const Sidebar = () => {
 
   const [collapseShow, setCollapseShow] = useState<String>("hidden");
 
-  const active = "text-lightBlue-500 hover:text-lightBlue-600";
-  const defaults = "text-blueGray-700 hover:text-blueGray-500";
+  const active = "text-sky-500 hover:text-sky-600";
+  const defaults = "text-slate-700 hover:text-slate-500";
   const activeIcon = "opacity-75";
-  const defaultsIcon = "text-blueGray-400";
+  const defaultsIcon = "text-slate-400";
 
   const linkActive = (pathname: String, isIcon: Boolean, icon: String = "") => {
     return isIcon
@@ -41,7 +41,7 @@ const Sidebar = () => {
 
   const projectName = () => (
     <Link
-      className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+      className="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
       to="/"
     >
       Coin Gecko
@@ -66,7 +66,7 @@ const Sidebar = () => {
         <div
           className={`md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded ${collapseShow}`}
         >
-          <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
+          <div className="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-slate-200">
             <div className="flex flex-wrap">
               <div className="w-6/12">{projectName()}</div>
               <div className="w-6/12 flex justify-end">

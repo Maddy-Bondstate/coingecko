@@ -60,7 +60,7 @@ export default function CoinDetails() {
     <div className="flex flex-wrap mt-4">
       <a
         href={`/admin/coin-list`}
-        className="animate-bounce bg-white text-blueGray-700 p-2 w-10 h-10 cursor-pointer ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center"
+        className="animate-bounce bg-white text-slate-700 p-2 w-10 h-10 cursor-pointer ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center"
       >
         <i className="fas fa-arrow-left" />
       </a>
@@ -94,50 +94,50 @@ export default function CoinDetails() {
               <div className="w-full px-4 text-center mt-5 mb-5">
                 <div className="flex justify-center py-4 lg:pt-4 pt-8">
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.coingecko_rank}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Coingecko Rank
                     </span>
                   </div>
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.coingecko_score}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Coingecko Score
                     </span>
                   </div>
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.community_score}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Community Score
                     </span>
                   </div>
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.developer_score}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Developer Score
                     </span>
                   </div>
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.liquidity_score}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Liquidity Score
                     </span>
                   </div>
                   <div className="mx-2 p-3 text-center">
-                    <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                    <span className="text-xl font-bold block uppercase tracking-wide text-slate-600">
                       {state.data.public_interest_score}
                     </span>
-                    <span className="text-sm text-blueGray-400">
+                    <span className="text-sm text-slate-400">
                       Public Interest Score
                     </span>
                   </div>
@@ -173,24 +173,24 @@ export default function CoinDetails() {
             </div>
 
             <div className="text-center mt-12">
-              <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+              <h3 className="text-xl font-semibold leading-normal mb-2 text-slate-700 mb-2">
                 {state.data.name}
               </h3>
-              <div className="mb-2 text-sm leading-normal text-blueGray-500 font-bold uppercase">
+              <div className="mb-2 text-sm leading-normal text-slate-500 font-bold uppercase">
                 Symbol: <b>{state.data.symbol}</b>
               </div>
-              <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>{" "}
+              <div className="text-sm leading-normal mt-0 mb-2 text-slate-400 font-bold uppercase">
+                <i className="fas fa-briefcase mr-2 text-lg text-slate-400"></i>{" "}
                 Categories: {state.data?.categories?.join(", ")}
               </div>
-              <div className="mb-2 text-sm leading-normal text-blueGray-600 font-bold uppercase mt-10">
+              <div className="mb-2 text-sm leading-normal text-slate-600 font-bold uppercase mt-10">
                 Community
               </div>
-              <div className="mb-2 text-blueGray-600">
+              <div className="mb-2 text-slate-600">
                 {state.data.links?.chat_url?.map((x: any, i: number) => (
                   <a
                     key={i}
-                    className="text-lightBlue-500 hover:text-lightBlue-600 mr-4"
+                    className="text-sky-500 hover:text-sky-600 mr-4"
                     href={x}
                   >
                     {x}
@@ -198,14 +198,14 @@ export default function CoinDetails() {
                 ))}
               </div>
 
-              <div className="mb-2 text-sm leading-normal text-blueGray-600 font-bold uppercase mt-10">
+              <div className="mb-2 text-sm leading-normal text-slate-600 font-bold uppercase mt-10">
                 Website
               </div>
-              <div className="mb-2 text-blueGray-600">
+              <div className="mb-2 text-slate-600">
                 {state.data.links?.homepage?.map((z: any, j: number) => (
                   <a
                     key={j}
-                    className="text-lightBlue-500 hover:text-lightBlue-600 mr-4"
+                    className="text-sky-500 hover:text-sky-600 mr-4"
                     href={z}
                   >
                     {z}
@@ -213,20 +213,20 @@ export default function CoinDetails() {
                 ))}
               </div>
 
-              <div className="mb-2 text-sm leading-normal text-blueGray-600 font-bold uppercase mt-10">
+              <div className="mb-2 text-sm leading-normal text-slate-600 font-bold uppercase mt-10">
                 Facebook:
                 <a
-                  className="ml-4 text-lightBlue-500 hover:text-lightBlue-600 mr-4"
+                  className="ml-4 text-sky-500 hover:text-sky-600 mr-4"
                   href={`https://www.facebook.com/${state.data.links?.facebook_username}`}
                 >
                   {state.data.links?.facebook_username}
                 </a>
               </div>
 
-              <div className="mb-2 text-sm leading-normal text-blueGray-600 font-bold uppercase mt-5">
+              <div className="mb-2 text-sm leading-normal text-slate-600 font-bold uppercase mt-5">
                 Twitter:
                 <a
-                  className="ml-4 text-lightBlue-500 hover:text-lightBlue-600 mr-4"
+                  className="ml-4 text-sky-500 hover:text-sky-600 mr-4"
                   href={`https://twitter.com/${state.data.links?.twitter_screen_name}`}
                 >
                   {state.data.links?.twitter_screen_name}
@@ -234,17 +234,17 @@ export default function CoinDetails() {
               </div>
             </div>
 
-            <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+            <div className="mt-10 py-10 border-t border-slate-200 text-center">
               <div className="flex flex-wrap justify-center">
                 <div className="w-full lg:w-9/12 px-4">
                   {" "}
-                  <h3 className="text-xl font-semibold leading-normal mb-2 text-blueGray-700">
+                  <h3 className="text-xl font-semibold leading-normal mb-2 text-slate-700">
                     Tickers
                   </h3>
                   {state?.data?.tickers?.map((b: any, u: number) => (
                     <div
                       key={u}
-                      className="mt-4 mb-4 text-lg leading-relaxed text-blueGray-700"
+                      className="mt-4 mb-4 text-lg leading-relaxed text-slate-700"
                     >
                       <p>
                         bid_ask_spread_percentage: {b.bid_ask_spread_percentage}
@@ -255,7 +255,7 @@ export default function CoinDetails() {
                       <p>
                         trade url:{" "}
                         <a
-                          className="text-lightBlue-500 hover:text-lightBlue-600"
+                          className="text-sky-500 hover:text-sky-600"
                           href={b.trade_url}
                         >
                           {b.trade_url}

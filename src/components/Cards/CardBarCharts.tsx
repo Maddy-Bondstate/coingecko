@@ -32,7 +32,7 @@ export const options = {
   },
 };
 
-export default function CardBarChart1({ data }: any) {
+export default function CardBarCharts({ data }: any) {
   let date: string = "";
   let label: any = [];
   let data1: any = [];

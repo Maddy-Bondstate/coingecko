@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -34,13 +33,13 @@ export const options = {
   },
 };
 
-export default function CardLineChart1({ data }: any) {
+export default function CardLineCharts({ data }: any) {
   let date: string = "";
   let label: any = [];
   let data1: any = [];
   let data2: any = [];
   let data3: any = [];
-  //
+
   if (data && data?.market_caps) {
     data?.market_caps.map(
       (a: any) =>

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Badge from "../../../components/UI/Badge/Badge";
-import CardTable from "../../../components/Cards/CardTable";
-import TableBody from "../../../components/UI/Table/TableBody";
-import { getData } from "../../../services/fetch";
+import Badge from "../../components/UI/Badge/Badge";
+import CardTable from "../../components/Cards/CardTable";
+import TableBody from "../../components/UI/Table/TableBody";
+import { getData } from "../../services/fetch";
 
 export default function CoinMarkets() {
   const [currencySymbol, setCurrencySymbol] = useState("$");
@@ -23,7 +23,7 @@ export default function CoinMarkets() {
       <TableBody name={`${currencySymbol} ${data.high_24h}`} />
       <TableBody name={`${currencySymbol} ${data.low_24h}`} />
       <TableBody>
-        <a href={`/admin/coin/${data.id}/market-chart`}>
+        <a href={`/coin/${data.id}/market-chart`}>
           <Badge name="View Chart" />
         </a>
       </TableBody>

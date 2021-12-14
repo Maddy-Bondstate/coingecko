@@ -1,39 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardBarChart from "../../../components/Cards/CardBarChart";
-import CardLineChart from "../../../components/Cards/CardLineChart";
+import CardBarChart from "../../components/Cards/CardBarChart";
+import CardLineChart from "../../components/Cards/CardLineChart";
+import Back from "../../components/UI/Back/Back";
+
+import { getData } from "../../services/fetch";
 
 export default function CoinDetails() {
-  const params = useParams();
-
-  const tableHeadName = ["Id", "Symbol", "Name"];
-  const tableBody = (data: any) => (
-    <tr key={data.id}>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {data.id}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {data.symbol}
-      </td>
-      <td className="border border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-        {data.name}
-      </td>
-    </tr>
-  );
-
-  let list = async () => {
-    const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${params.id}`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      }
-    );
-
-    return await response.json();
-  };
+  const params: any = useParams();
 
   const [state, setState] = useState<any>({
     data: {},
@@ -46,24 +20,22 @@ export default function CoinDetails() {
       loading: true,
     }));
 
-    list().then((data: any) => {
-      console.log(data);
-      setState((s: any) => ({
-        ...s,
-        data,
-        loading: false,
-      }));
-    });
-  }, []);
+    const list = async (id: string) => {
+      return await getData(`coins/${id}`).then((data: any) => {
+        setState((s: any) => ({
+          ...s,
+          data,
+          loading: false,
+        }));
+      });
+    };
+
+    list(params.id);
+  }, [params]);
 
   return (
     <div className="flex flex-wrap mt-4">
-      <a
-        href={`/admin/coin-list`}
-        className="animate-bounce bg-white text-slate-700 p-2 w-10 h-10 cursor-pointer ring-1 ring-gray-900/5 shadow-lg rounded-full flex items-center justify-center"
-      >
-        <i className="fas fa-arrow-left" />
-      </a>
+      <Back to={`/coin-list`} />
       <div className="w-full mb-12 px-4">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
           <div className="px-6">
@@ -80,7 +52,7 @@ export default function CoinDetails() {
               <div className="mt-28">
                 <span className="relative inline-flex">
                   <a
-                    href={`/admin/coin/${state.data.id}/market-chart`}
+                    href={`/coin/${state.data.id}/market-chart`}
                     className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-sky-500 bg-white transition ease-in-out duration-150 ring-1 ring-gray-900/10"
                   >
                     View Coin Market Chart
@@ -237,7 +209,6 @@ export default function CoinDetails() {
             <div className="mt-10 py-10 border-t border-slate-200 text-center">
               <div className="flex flex-wrap justify-center">
                 <div className="w-full lg:w-9/12 px-4">
-                  {" "}
                   <h3 className="text-xl font-semibold leading-normal mb-2 text-slate-700">
                     Tickers
                   </h3>

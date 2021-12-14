@@ -24,17 +24,17 @@ const Sidebar = () => {
   const menu = [
     {
       name: "Dashboard",
-      link: "/admin/dashboard",
+      link: "/",
       icon: "fa-tv",
     },
     {
       name: "Coin List",
-      link: "/admin/coin-list",
+      link: "/coin-list",
       icon: "fa-table",
     },
     {
       name: "Coin Markets",
-      link: "/admin/coin-markets",
+      link: "/coin-markets",
       icon: "fa-table",
     },
   ];

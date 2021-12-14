@@ -30,13 +30,13 @@ export default function App() {
           <Fragment>
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/coin-list" element={<CoinList />} />
+              <Route path="/coin/list" element={<CoinList />} />
               <Route path="/coin/:id" element={<CoinDetails />} />
               <Route
                 path="/coin/:id/market-chart"
                 element={<CoinMarketChart />}
               />
-              <Route path="/coin-markets" element={<CoinMarkets />} />
+              <Route path="/coin/markets" element={<CoinMarkets />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Fragment>

@@ -38,7 +38,7 @@ export default function CoinMarketChart() {
 
   return (
     <div className="flex flex-wrap mt-4">
-      <Back to={`/coin-markets`} />
+      <Back to={`/coin/markets`} />
       <div className="w-full mb-12 px-4">
         <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
           <div className="px-6">

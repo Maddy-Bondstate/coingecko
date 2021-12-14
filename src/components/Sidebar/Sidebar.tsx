@@ -1,43 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { menu, sidebarLinkActive } from "../../services/const";
 
 const Sidebar = () => {
   const location = useLocation();
-
   const [collapseShow, setCollapseShow] = useState<String>("hidden");
-
-  const active = "text-sky-500 hover:text-sky-600";
-  const defaults = "text-slate-700 hover:text-slate-500";
-  const activeIcon = "opacity-75";
-  const defaultsIcon = "text-slate-400";
 
   const linkActive = (pathname: String, isIcon: Boolean, icon: String = "") => {
     return isIcon
       ? location.pathname === pathname
-        ? `${activeIcon} ${icon}`
-        : `${defaultsIcon} ${icon}`
+        ? `${sidebarLinkActive.activeIcon} ${icon}`
+        : `${sidebarLinkActive.defaultsIcon} ${icon}`
       : location.pathname === pathname
-      ? active
-      : defaults;
+      ? sidebarLinkActive.active
+      : sidebarLinkActive.defaults;
   };
-
-  const menu = [
-    {
-      name: "Dashboard",
-      link: "/",
-      icon: "fa-tv",
-    },
-    {
-      name: "Coin List",
-      link: "/coin-list",
-      icon: "fa-table",
-    },
-    {
-      name: "Coin Markets",
-      link: "/coin-markets",
-      icon: "fa-table",
-    },
-  ];
 
   const projectName = () => (
     <Link
@@ -48,7 +25,7 @@ const Sidebar = () => {
     </Link>
   );
 
-  const collapseButton = (click: String, icon: String) => (
+  const collapseButton = (click: string, icon: string) => (
     <button
       type="button"
       className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"

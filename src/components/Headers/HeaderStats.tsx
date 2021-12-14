@@ -14,7 +14,7 @@ export default function HeaderStats() {
               statPercent="3.48"
               statPercentColor="text-emerald-500"
               statDescripiron="Since last month"
-              statIconName="far fa-chart-bar"
+              statIconName="fas fa-chart-bar"
               statIconColor="bg-red-500"
             />
           </div>
@@ -22,18 +22,12 @@ export default function HeaderStats() {
             <CardStats
               statSubtitle="COIN MARKETS"
               statTitle="100"
-              // statArrow="down"
-              // statPercent="3.48"
-              // statPercentColor="text-red-500"
-              // statDescripiron="Since last week"
-              // statIconName="fas fa-chart-pie"
-              // statIconColor="bg-orange-500"
               statArrow="up"
               statPercent="2.5"
               statPercentColor="text-emerald-500"
               statDescripiron="Since last month"
-              statIconName="far fa-chart-bar"
-              statIconColor="bg-red-500"
+              statIconName="fas fa-chart-line"
+              statIconColor="bg-orange-500"
             />
           </div>
           <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
@@ -44,7 +38,7 @@ export default function HeaderStats() {
               statPercent="1.10"
               statPercentColor="text-orange-500"
               statDescripiron="Since yesterday"
-              statIconName="fas fa-users"
+              statIconName="fas fa-chart-area"
               statIconColor="bg-pink-500"
             />
           </div>

@@ -7,10 +7,15 @@ import Back from "../../components/UI/Back/Back";
 
 import { getData } from "../../services/fetch";
 
+interface CoinMarketChartState {
+  data: object;
+  loading: boolean;
+}
+
 export default function CoinMarketChart() {
   const params: any = useParams();
 
-  const [state, setState] = useState<any>({
+  const [state, setState] = useState<CoinMarketChartState>({
     data: {},
     loading: false,
   });

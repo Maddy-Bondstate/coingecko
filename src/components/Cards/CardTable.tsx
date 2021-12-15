@@ -9,7 +9,7 @@ interface CardTableProps {
   list: any;
   perPage: number;
   pageName: string;
-  setCurrencySymbol: any;
+  setCurrencySymbol?: any;
 }
 
 export default function CardTable({
@@ -158,7 +158,7 @@ export default function CardTable({
           pageRangeDisplayed={2}
           pageCount={pageCount}
           previousLabel="<"
-          forcePage={listOffset === 0 ? 0 : listOffset / perPage}
+          forcePage={listOffset > 0 ? listOffset / perPage : 0}
           className="pagination"
         />
       </div>

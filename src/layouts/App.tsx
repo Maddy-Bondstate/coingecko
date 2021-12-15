@@ -2,11 +2,11 @@ import { Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // components
-import AdminNavbar from "../components/Navbars/AdminNavbar";
+import AdminNavbar from "../components/Navbars/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
-import FooterAdmin from "../components/Footers/FooterAdmin";
+import Footer from "../components/Footers/Footer";
 import HeaderStats from "../components/Headers/HeaderStats";
-import PageNotFound from "../components/PageNotFound";
+import PageNotFound from "../components/PageNotFound/PageNotFound";
 
 // screens
 import Dashboard from "../screens/dashboard/Dashboard";
@@ -40,7 +40,7 @@ export default function App() {
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Fragment>
-          <FooterAdmin />
+          <Footer />
         </div>
       </div>
     </BrowserRouter>

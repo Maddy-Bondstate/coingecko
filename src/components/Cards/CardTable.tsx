@@ -3,6 +3,15 @@ import ReactPaginate from "react-paginate";
 import "../../assets/styles/pagination.css";
 import TableHead from "../UI/Table/TableHead";
 
+interface CardTableProps {
+  tableHeadName: Array<string>;
+  tableBody: any;
+  list: any;
+  perPage: number;
+  pageName: string;
+  setCurrencySymbol: any;
+}
+
 export default function CardTable({
   tableHeadName,
   tableBody,
@@ -10,7 +19,7 @@ export default function CardTable({
   perPage,
   pageName,
   setCurrencySymbol,
-}: any) {
+}: CardTableProps) {
   const tableHead = (name: string) => <TableHead key={name} name={name} />;
 
   const [state, setState] = useState<any>({

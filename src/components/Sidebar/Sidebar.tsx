@@ -1,20 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { menu, sidebarLinkActive } from "../../services/const";
+import { Link } from "react-router-dom";
+import { menu } from "../../services/const";
+import { Menu } from "./Menu";
 
 const Sidebar = () => {
-  const location = useLocation();
   const [collapseShow, setCollapseShow] = useState<String>("hidden");
-
-  const linkActive = (pathname: String, isIcon: Boolean, icon: String = "") => {
-    return isIcon
-      ? location.pathname === pathname
-        ? `${sidebarLinkActive.activeIcon} ${icon}`
-        : `${sidebarLinkActive.defaultsIcon} ${icon}`
-      : location.pathname === pathname
-      ? sidebarLinkActive.active
-      : sidebarLinkActive.defaults;
-  };
 
   const projectName = () => (
     <Link
@@ -51,25 +41,13 @@ const Sidebar = () => {
               </div>
             </div>
           </div>
+
           <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-            <li className="items-center">
-              <Link
-                className={`text-xs uppercase py-3 font-bold block ${linkActive(
-                  menu.dashboard.link,
-                  false
-                )}`}
-                to={menu.dashboard.link}
-              >
-                <i
-                  className={`fas mr-2 text-sm ${linkActive(
-                    menu.dashboard.link,
-                    true,
-                    menu.dashboard.icon
-                  )}`}
-                ></i>
-                {menu.dashboard.name}
-              </Link>
-            </li>
+            <Menu
+              url={menu.dashboard.link}
+              icon={menu.dashboard.icon}
+              name={menu.dashboard.name}
+            />
           </ul>
 
           <hr className="my-4 md:min-w-full text-slate-300" />
@@ -80,24 +58,7 @@ const Sidebar = () => {
 
           <ul className="md:flex-col md:min-w-full flex flex-col list-none">
             {menu.coin.map((m, i) => (
-              <li className="items-center" key={i}>
-                <Link
-                  className={`text-xs uppercase py-3 font-bold block ${linkActive(
-                    m.link,
-                    false
-                  )}`}
-                  to={m.link}
-                >
-                  <i
-                    className={`fas mr-2 text-sm ${linkActive(
-                      m.link,
-                      true,
-                      m.icon
-                    )}`}
-                  ></i>
-                  {m.name}
-                </Link>
-              </li>
+              <Menu key={i} url={m.link} icon={m.icon} name={m.name} />
             ))}
           </ul>
         </div>

@@ -1,3 +1,5 @@
+import { config } from "../../services/config";
+
 export default function PageNotFound() {
   return (
     <div className="flex flex-col items-center justify-center lg:py-32">
@@ -9,7 +11,7 @@ export default function PageNotFound() {
         The page you're looking for doesn't exist.
       </p>
       <a
-        href="/"
+        href={config.baseURL}
         className="px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100"
       >
         Go home

@@ -1,4 +1,4 @@
-import React from "react";
+import { config } from "../../services/config";
 
 export default function Navbar() {
   return (
@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
         <a
           className="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-          href="/"
+          href={config.baseURL}
           onClick={(e) => e.preventDefault()}
         >
           Dashboard

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +8,15 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Line } from "react-chartjs-2";
+
+interface CardLineChartProps {
+  label: Array<string>;
+  data1: Array<number>;
+  data2: Array<number>;
+  data3: Array<number>;
+}
 
 ChartJS.register(
   CategoryScale,
@@ -34,7 +41,12 @@ export const options = {
   },
 };
 
-export default function CardLineChart({ label, data1, data2, data3 }: any) {
+export default function CardLineChart({
+  label,
+  data1,
+  data2,
+  data3,
+}: CardLineChartProps) {
   const datas = {
     labels: label,
     datasets: [

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +7,15 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Bar } from "react-chartjs-2";
+
+interface CardBarChartProps {
+  label: Array<string>;
+  data1: Array<number>;
+  data2: Array<number>;
+  data3: Array<number>;
+}
 
 ChartJS.register(
   CategoryScale,
@@ -32,29 +39,12 @@ export const options = {
   },
 };
 
-// export const data = {
-//   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-//   datasets: [
-//     {
-//       label: `${new Date().getFullYear()}`,
-//       backgroundColor: "#ed64a6",
-//       borderColor: "#ed64a6",
-//       data: [30, 78, 56, 34, 100, 45, 13],
-//       fill: false,
-//       barThickness: 8,
-//     },
-//     {
-//       label: `${new Date().getFullYear() - 1}`,
-//       fill: false,
-//       backgroundColor: "#4c51bf",
-//       borderColor: "#4c51bf",
-//       data: [27, 68, 86, 74, 10, 4, 87],
-//       barThickness: 8,
-//     },
-//   ],
-// };
-
-export default function CardBarChart({ label, data1, data2, data3 }: any) {
+export default function CardBarChart({
+  label,
+  data1,
+  data2,
+  data3,
+}: CardBarChartProps) {
   const datas = {
     labels: label,
     datasets: [

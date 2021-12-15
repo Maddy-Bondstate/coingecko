@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +7,12 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Bar } from "react-chartjs-2";
+
+interface CardBarChartsProps {
+  data: any;
+}
 
 ChartJS.register(
   CategoryScale,
@@ -32,13 +36,13 @@ export const options = {
   },
 };
 
-export default function CardBarCharts({ data }: any) {
+export default function CardBarCharts({ data }: CardBarChartsProps) {
   let date: string = "";
   let label: any = [];
   let data1: any = [];
   let data2: any = [];
   let data3: any = [];
-  //
+
   if (data && data?.market_caps) {
     data?.market_caps.map(
       (a: any) =>

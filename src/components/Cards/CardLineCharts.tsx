@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -19,6 +20,10 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+interface CardLineChartsProps {
+  data: any;
+}
 
 export const options = {
   responsive: true,
@@ -33,7 +38,7 @@ export const options = {
   },
 };
 
-export default function CardLineCharts({ data }: any) {
+export default function CardLineCharts({ data }: CardLineChartsProps) {
   let date: string = "";
   let label: any = [];
   let data1: any = [];
